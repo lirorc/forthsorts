@@ -27,6 +27,7 @@
   p s bubbleup ;
 
 : bubbledown ( list index length -- ) { l ix n -- }
+  l 40 plstn cr ." --- "
   n 0> if
     l ix left thelem 0>
     l ix left thelem
@@ -35,19 +36,21 @@
       l ix thcell
       l ix left thcell
       swapcell
-      l ix left n 1- recurse
+      l ix left n 2/ recurse
       else
       l ix thcell
       l ix right thcell
       swapcell
-      l ix right n 1- recurse
+      l ix right n 2/ recurse
       then
     then ;
 
 : pop ( ptr length -- n ) { p l -- }
-  p @
-  0 p !
-  p 0 l bubbledown ;
+  l 0> if
+    p @
+    0 p !
+    p 0 l bubbledown
+    then ;
 
 : heapsort ( list size -- ) { l s -- }
 \ eg. create mylist 3 , 2 , 1 ,

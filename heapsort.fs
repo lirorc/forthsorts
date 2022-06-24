@@ -27,7 +27,6 @@
   p s bubbleup ;
 
 : bubbledown ( list index length -- ) { l ix n -- }
-  l 40 plstn cr ." --- "
   n 0> if
     l ix left thelem 0>
     l ix left thelem

@@ -38,13 +38,6 @@
 : power { n u -- n^u } \ wrong for u < 2 
   n u 2 - begin swap n * swap 1- dup 0< until drop ;
 
-: log2 ( +n1 -- n2 )
-  assert( dup 0 > )
-  -1 begin
-    1+ swap 2/ swap
-    over 0 <= until
-  nip ;
-
 : base2ceil ( n -- n+e )
   log2 1+ 2 swap power ; \ can just shift too
 : base2floor ( n -- n-e )
